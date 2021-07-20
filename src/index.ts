@@ -20,8 +20,7 @@ connection
 .catch( (error: Error): void => console.log(error));
 
 const routers = [utilsRouter, productRouter, providerRouter, categoryRouter]
-// const PORT: string | undefined = process.env.API_PORT
-const PORT: number = 443
+const PORT: string | undefined = process.env.PORT
 
 const app = express()
 app.use(cors())
