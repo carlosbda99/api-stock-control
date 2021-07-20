@@ -5,7 +5,7 @@
     "username": "hhnsrpuigrqfun",
     "password": "2a9a9db95456f650eae4bd570b4b557229b44dcc8785a83b6ad5e8ee687d1b93",
     "database": "d1ed7nnmglev6o",
-    "synchronize": false,
+    "synchronize": true,
     "logging": false,
     "entities": [
         "build/**/entity.js"
