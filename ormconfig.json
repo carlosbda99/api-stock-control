@@ -11,6 +11,8 @@
         "src/**/entity.ts"
     ],
     "extra": {
-        "ssl": true
+        "ssl": {
+            "rejectUnauthorized": false
+        }
     }
 }
