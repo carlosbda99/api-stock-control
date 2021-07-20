@@ -12,7 +12,7 @@ import categoryRouter from './categories/router'
 import connection from './db/conn'
 
 
-connection()
+connection
 .then( async () => {
     console.log('Successfully connected to database!')
 })

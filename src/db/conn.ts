@@ -1,31 +1,16 @@
-import { getConnectionOptions, ConnectionOptions, createConnection } from 'typeorm';
+import { createConnection } from 'typeorm';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const getOptions = async () => {
-  let connectionOptions: ConnectionOptions;
-  connectionOptions = {
+const connection = createConnection( {
     type: 'postgres',
     synchronize: false,
     logging: false,
     extra: {
       ssl: true,
     },
-    entities: ['dist/entity/*.*'],
-  };
-  if (process.env.DATABASE_URL) {
-    Object.assign(connectionOptions, { url: process.env.DATABASE_URL });
-  } else {
-    connectionOptions = await getConnectionOptions(); 
-  }
-
-  return connectionOptions;
-};
-
-let typeormconfig
-async () => {
-    typeormconfig = await getOptions()
-}
-const connection = createConnection(typeormconfig);
+    entities: ['"build/**/entity.ts"'],
+    url: process.env.DATABASE_URL
+  });
 
 export default connection
