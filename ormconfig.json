@@ -1,9 +1,16 @@
 {
     "type": "postgres",
-    "url": "postgres://hhnsrpuigrqfun:2a9a9db95456f650eae4bd570b4b557229b44dcc8785a83b6ad5e8ee687d1b93@ec2-52-1-20-236.compute-1.amazonaws.com:5432/d1ed7nnmglev6o",
+    "host": "ec2-52-1-20-236.compute-1.amazonaws.com",
+    "port": 5432,
+    "username": "hhnsrpuigrqfun",
+    "password": "2a9a9db95456f650eae4bd570b4b557229b44dcc8785a83b6ad5e8ee687d1b93",
+    "database": "d1ed7nnmglev6o",
     "synchronize": false,
     "logging": false,
     "entities": [
         "src/**/entity.ts"
-    ]
+    ],
+    "extra": {
+        "ssl": true
+    }
 }
