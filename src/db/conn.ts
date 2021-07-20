@@ -22,9 +22,10 @@ const getOptions = async () => {
   return connectionOptions;
 };
 
-const connection = async (): Promise<void> => {
-    const typeormconfig = await getOptions();
-    await createConnection(typeormconfig);
-};
+let typeormconfig
+async () => {
+    typeormconfig = await getOptions()
+}
+const connection = createConnection(typeormconfig);
 
 export default connection
