@@ -3,7 +3,6 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { Request, Response } from 'express'
 import { Connection } from 'typeorm'
-
 require('dotenv').config()
 
 import utilsRouter from './utils/router'
@@ -13,8 +12,8 @@ import categoryRouter from './categories/router'
 import connection from './db/conn'
 
 
-connection
-.then( (conn: Connection): void => {
+connection()
+.then( async () => {
     console.log('Successfully connected to database!')
 })
 .catch( (error: Error): void => console.log(error));
