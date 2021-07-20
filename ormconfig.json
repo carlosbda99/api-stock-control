@@ -8,8 +8,7 @@
     "synchronize": true,
     "logging": false,
     "entities": [
-        "build/**/entity.js",
-        "src/**/entity.ts"
+        "build/**/entity.js"
     ],
     "extra": {
         "ssl": {
