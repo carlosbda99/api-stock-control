@@ -2,12 +2,18 @@
     "type": "postgres",
     "host": "host",
     "port": 5432,
-    "username": "username",
-    "password": "password",
-    "database": "database",
+    "username": "user",
+    "password": "pass",
+    "database": "db",
     "synchronize": true,
     "logging": false,
     "entities": [
+        "build/**/entity.js",
         "src/**/entity.ts"
-    ]
+    ],
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    }
 }
