@@ -1,0 +1,13 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "senha@123",
+    "database": "api",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "src/**/entity.ts"
+    ]
+}
