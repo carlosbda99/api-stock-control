@@ -9,5 +9,8 @@
     "logging": false,
     "entities": [
         "src/**/entity.ts"
-    ]
+    ],
+    "extra": {
+        "ssl": true
+    }
 }
