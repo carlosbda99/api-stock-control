@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { Request, Response } from 'express'
 import { Connection } from 'typeorm'
+
 require('dotenv').config()
 
 import utilsRouter from './utils/router'
@@ -13,13 +14,13 @@ import connection from './db/conn'
 
 
 connection
-.then( async () => {
+.then( (conn: Connection): void => {
     console.log('Successfully connected to database!')
 })
 .catch( (error: Error): void => console.log(error));
 
 const routers = [utilsRouter, productRouter, providerRouter, categoryRouter]
-const PORT: string | undefined = process.env.PORT
+const PORT: string | undefined = process.env.API_PORT
 
 const app = express()
 app.use(cors())
