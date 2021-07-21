@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
+const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const entity_1 = require("../providers/entity");
 const entity_2 = require("../categories/entity");
@@ -24,6 +25,7 @@ __decorate([
         length: 20,
         unique: true
     }),
+    class_validator_1.Length(5),
     __metadata("design:type", String)
 ], Product.prototype, "name", void 0);
 __decorate([
@@ -31,12 +33,15 @@ __decorate([
         length: 120,
         nullable: true
     }),
+    class_validator_1.Length(5),
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
 __decorate([
     typeorm_1.Column({
         default: 0
     }),
+    class_validator_1.IsNumber(),
+    class_validator_1.Min(0),
     __metadata("design:type", Number)
 ], Product.prototype, "stock", void 0);
 __decorate([
@@ -45,7 +50,17 @@ __decorate([
 ], Product.prototype, "category", void 0);
 __decorate([
     typeorm_1.ManyToMany(() => entity_1.Provider, provider => provider.products),
-    typeorm_1.JoinTable(),
+    typeorm_1.JoinTable({
+        name: 'product_provider',
+        joinColumn: {
+            name: 'product',
+            referencedColumnName: 'id'
+        },
+        inverseJoinColumn: {
+            name: 'provider',
+            referencedColumnName: 'id'
+        }
+    }),
     __metadata("design:type", Array)
 ], Product.prototype, "providers", void 0);
 __decorate([
@@ -53,6 +68,7 @@ __decorate([
         default: 0,
         nullable: true
     }),
+    class_validator_1.IsDecimal(),
     __metadata("design:type", Number)
 ], Product.prototype, "value", void 0);
 __decorate([
@@ -66,6 +82,8 @@ __decorate([
         default: 0,
         nullable: true
     }),
+    class_validator_1.IsNumber(),
+    class_validator_1.Min(0),
     __metadata("design:type", Number)
 ], Product.prototype, "width", void 0);
 __decorate([
@@ -73,6 +91,8 @@ __decorate([
         default: 0,
         nullable: true
     }),
+    class_validator_1.IsNumber(),
+    class_validator_1.Min(0),
     __metadata("design:type", Number)
 ], Product.prototype, "height", void 0);
 __decorate([
@@ -80,6 +100,8 @@ __decorate([
         default: 0,
         nullable: true
     }),
+    class_validator_1.IsNumber(),
+    class_validator_1.Min(0),
     __metadata("design:type", Number)
 ], Product.prototype, "lenght", void 0);
 __decorate([

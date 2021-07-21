@@ -53,12 +53,12 @@ async function insertOne(req: Request, res: Response): Promise<void> {
     let products: object[] = []
 
     if (req.body.products){
-        products = req.body.products.map(id => {id: id})
+        products = req.body.products.map(id => {return {id: id}})
     }
 
     const category: Category = new Category()
     category.name = req.body.name
-    category.products = req.body.products ? await Product.find({
+    category.products = products.length > 0 ? await Product.find({
         where: products
     }) : req.body.products
     category.description = req.body.description

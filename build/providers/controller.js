@@ -53,7 +53,7 @@ exports.findOne = findOne;
 function findOneById(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = parseInt(req.params.id);
-        entity_2.Provider.findOne({ id: id })
+        entity_2.Provider.findOne({ id: id }, { relations: ['products'] })
             .then(provider => {
             res.json({
                 provider: provider
@@ -71,13 +71,13 @@ function insertOne(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let products = [];
         if (req.body.products) {
-            products = req.body.products.map(id => { id: id; });
+            products = req.body.products.map(id => { return { id: id }; });
         }
         const provider = new entity_2.Provider();
         provider.cnpj = req.body.cnpj;
         provider.name = req.body.name;
         provider.phone = req.body.phone;
-        provider.products = req.body.products ? yield entity_1.Product.find({
+        provider.products = products.length > 0 ? yield entity_1.Product.find({
             where: products
         }) : req.body.products;
         entity_2.Provider.insert(provider)

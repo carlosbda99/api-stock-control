@@ -21,7 +21,7 @@ async function findAll(req: Request, res: Response): Promise<void> {
 async function findOne(req: Request, res: Response): Promise<void> {
     const name: string = req.body.name;
 
-    Product.findOne({ name: name }, {relations: ["category"]})
+    Product.findOne({ name: name }, {relations: ["category", "providers"]})
         .then(product => {
             res.json({
                 product: product
@@ -37,7 +37,7 @@ async function findOne(req: Request, res: Response): Promise<void> {
 async function findOneById(req: Request, res: Response): Promise<void> {
     const id: number = parseInt(req.params.id);
 
-    Product.findOne({ id: id }, {relations: ["capture_id", "providers"]})
+    Product.findOne({ id: id }, {relations: ["category", "providers"]})
         .then(product => {
             res.json({
                 product: product

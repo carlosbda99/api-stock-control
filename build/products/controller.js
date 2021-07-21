@@ -32,7 +32,7 @@ exports.findAll = findAll;
 function findOne(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const name = req.body.name;
-        entity_1.Product.findOne({ name: name }, { relations: ["category"] })
+        entity_1.Product.findOne({ name: name }, { relations: ["category", "providers"] })
             .then(product => {
             res.json({
                 product: product
@@ -49,7 +49,7 @@ exports.findOne = findOne;
 function findOneById(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = parseInt(req.params.id);
-        entity_1.Product.findOne({ id: id }, { relations: ["capture_id", "providers"] })
+        entity_1.Product.findOne({ id: id }, { relations: ["category", "providers"] })
             .then(product => {
             res.json({
                 product: product

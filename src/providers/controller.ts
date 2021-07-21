@@ -37,7 +37,7 @@ async function findOne(req: Request, res: Response): Promise<void> {
 async function findOneById(req: Request, res: Response): Promise<void> {
     const id: number = parseInt(req.params.id);
 
-    Provider.findOne({id: id})
+    Provider.findOne({id: id}, {relations: ['products']})
     .then( provider => {
         res.json({
             provider: provider
@@ -54,14 +54,14 @@ async function insertOne(req: Request, res: Response): Promise<void> {
     let products: object[] = []
 
     if (req.body.products){
-        products = req.body.products.map(id => {id: id})
+        products = req.body.products.map(id => { return {id: id}})
     }
 
     const provider: Provider = new Provider();
     provider.cnpj = req.body.cnpj
     provider.name = req.body.name
     provider.phone = req.body.phone
-    provider.products = req.body.products? await Product.find({
+    provider.products = products.length > 0 ? await Product.find({
         where: products
     }) : req.body.products
 

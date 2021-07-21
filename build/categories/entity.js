@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
+const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const entity_1 = require("../products/entity");
 let Category = class Category extends typeorm_1.BaseEntity {
@@ -23,6 +24,7 @@ __decorate([
         length: 20,
         unique: true
     }),
+    class_validator_1.Length(5),
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
 __decorate([
@@ -30,6 +32,7 @@ __decorate([
         length: 120,
         nullable: true
     }),
+    class_validator_1.Length(5),
     __metadata("design:type", String)
 ], Category.prototype, "description", void 0);
 __decorate([

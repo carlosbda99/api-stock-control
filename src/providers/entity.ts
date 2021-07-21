@@ -8,7 +8,8 @@ import {
     CreateDateColumn,
     BaseEntity,
     ManyToMany,
-    JoinTable
+    JoinTable,
+    JoinColumn
 } from 'typeorm'
 import { Product } from "../products/entity";
 
@@ -32,8 +33,7 @@ export class Provider extends BaseEntity{
     cnpj: string
 
     @ManyToMany(() => Product, product => product.providers)
-    @JoinTable()
-    products?: Provider[]
+    products: Provider[]
 
     @Column({
         nullable: true

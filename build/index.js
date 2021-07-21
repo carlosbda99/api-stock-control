@@ -18,7 +18,7 @@ conn_1.default
 })
     .catch((error) => console.log(error));
 const routers = [router_1.default, router_2.default, router_3.default, router_4.default];
-const PORT = process.env.API_PORT;
+const PORT = process.env.PORT;
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());

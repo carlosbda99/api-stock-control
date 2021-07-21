@@ -45,7 +45,17 @@ export class Product extends BaseEntity{
     category: Category
 
     @ManyToMany(() => Provider, provider => provider.products)
-    @JoinTable()
+    @JoinTable({
+        name: 'product_provider',
+        joinColumn: {
+            name: 'product',
+            referencedColumnName: 'id'
+        },
+        inverseJoinColumn: {
+            name: 'provider',
+            referencedColumnName: 'id'   
+        }
+    })
     providers: Provider[]
 
     @Column({

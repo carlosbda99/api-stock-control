@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Provider = void 0;
+const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const entity_1 = require("../products/entity");
 let Provider = class Provider extends typeorm_1.BaseEntity {
@@ -23,6 +24,7 @@ __decorate([
         length: 20,
         unique: true
     }),
+    class_validator_1.Length(5),
     __metadata("design:type", String)
 ], Provider.prototype, "name", void 0);
 __decorate([
@@ -30,11 +32,11 @@ __decorate([
         unique: true,
         length: 18
     }),
+    class_validator_1.Length(18),
     __metadata("design:type", String)
 ], Provider.prototype, "cnpj", void 0);
 __decorate([
     typeorm_1.ManyToMany(() => entity_1.Product, product => product.providers),
-    typeorm_1.JoinTable(),
     __metadata("design:type", Array)
 ], Provider.prototype, "products", void 0);
 __decorate([

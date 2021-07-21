@@ -67,11 +67,11 @@ function insertOne(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let products = [];
         if (req.body.products) {
-            products = req.body.products.map(id => { id: id; });
+            products = req.body.products.map(id => { return { id: id }; });
         }
         const category = new entity_2.Category();
         category.name = req.body.name;
-        category.products = req.body.products ? yield entity_1.Product.find({
+        category.products = products.length > 0 ? yield entity_1.Product.find({
             where: products
         }) : req.body.products;
         category.description = req.body.description;
